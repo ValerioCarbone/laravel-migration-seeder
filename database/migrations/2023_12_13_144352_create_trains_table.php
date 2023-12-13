@@ -21,9 +21,9 @@ return new class extends Migration
             $table->time('arrival_time');
             $table->unsignedSmallInteger('train_id');
             $table->unsignedTinyInteger('number_of_carriages');
-            $table->boolean('on_time')->default('true');
+            $table->boolean('on_time')->default(1);
             $table->unsignedSmallInteger('delay')->nullable();
-            $table->boolean('cancelled')->default('false');
+            $table->boolean('cancelled')->default(0);
             $table->timestamps();
         });
     }
