@@ -2,6 +2,8 @@
 
 @section('title', 'Trains')
 @section('content')
+    @dump($trains)
+
     <main>
         <h1 class="text-center">Treni</h1>
         <table class="table">
@@ -19,48 +21,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    @foreach ($trains as $train)
+                @foreach ($trains as $train)
+                    <tr>
                         <td>{{ $train->company }}</td>
-                    @endforeach
-                </tr>
-                <tr>
-                    @foreach ($trains as $train)
                         <td>{{ $train->departure_date }}</td>
-                    @endforeach
-                </tr>
-                <tr>
-                    @foreach ($trains as $train)
                         <td>{{ $train->departure_station }}</td>
-                    @endforeach
-                </tr>
-                <tr>
-                    @foreach ($trains as $train)
                         <td>{{ $train->arrival_station }}</td>
-                    @endforeach
-                </tr>
-                <tr>
-                    @foreach ($trains as $train)
                         <td>{{ $train->departure_time }}</td>
-                    @endforeach
-                </tr>
-                <tr>
-                    @foreach ($trains as $train)
                         <td>{{ $train->arrival_time }}</td>
-                    @endforeach
-                </tr>
-                <tr>
-                    @foreach ($trains as $train)
                         <td>{{ $train->train_id }}</td>
-                    @endforeach
-                </tr>
-                <tr>
-                    @foreach ($trains as $train)
                         <td>{{ $train->number_of_carriages }}</td>
-                    @endforeach
-                </tr>
-                <tr>
-                    @foreach ($trains as $train)
                         <td>
                             @if ($train->on_time == 1)
                                 The train is on time
@@ -68,8 +38,8 @@
                                 The train is running late
                             @endif
                         </td>
-                    @endforeach
-                </tr>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </main>

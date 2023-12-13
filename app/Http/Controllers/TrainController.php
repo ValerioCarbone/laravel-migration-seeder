@@ -9,7 +9,7 @@ class TrainController extends Controller
 {
     public function index()
     {
-        $trains = Train::where(strtotime('departure_date') < strtotime(date('Ymd')));
+        $trains = Train::all();
         return view('train.index', compact('trains'));
     }
 }
