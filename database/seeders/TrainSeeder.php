@@ -19,13 +19,23 @@ class TrainSeeder extends Seeder
             do {
                 $new_train->arrival_station = $faker->city();
             } while ($new_train->departure_station == $new_train->arrival_station);
-            $new_train->departure_date_time = $faker->dateTimeBetween('-10 week', '+20 week');
-            $new_train->arrival_date_time = $faker->dateTimeBetween('-10 week', '+20 week');
-            // $new_train->arrival_date_time = $faker->dateTimeBetween($new_train->departure_date_time, '+1 day');
+            $departure = $faker->dateTimeBetween('-1 week', '+1 week');
+            $arrival = $faker->dateTimeBetween($departure, '+1 day');
+            $new_train->departure_date_time = $departure;
+            $new_train->arrival_date_time = $arrival;
             $new_train->train_id = $faker->numerify('####');
             $new_train->number_of_carriages = $faker->numberBetween(4, 20);
-            // if ($new_train->departure_date_time)
-            // $new_train->on_time = $faker->randomElement([false, true]);
+            $on_time = $faker->randomElement([false, true]);
+            $new_train->on_time = $on_time;
+            if ($on_time == true) {
+                $new_train->cancelled == false;
+                $new_train->delay = null;
+            } else {
+                $new_train->cancelled = $faker->randomElement([false, true]);
+            }
+            if ($new_train->cancelled == false) {
+                $new_train->delay = $faker->numberBetween(4, 200);
+            }
             $new_train->save();
         }
     }
