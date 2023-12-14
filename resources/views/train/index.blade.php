@@ -11,7 +11,6 @@
             <thead>
                 <tr>
                     <th scope="col">Company</th>
-                    <th scope="col">Departure date</th>
                     <th scope="col">Departure Station</th>
                     <th scope="col">Arrival Station</th>
                     <th scope="col">Departure Time</th>
@@ -25,11 +24,10 @@
                 @foreach ($trains as $train)
                     <tr>
                         <td>{{ $train->company }}</td>
-                        <td>{{ $train->departure_date }}</td>
                         <td>{{ $train->departure_station }}</td>
                         <td>{{ $train->arrival_station }}</td>
-                        <td>{{ $train->departure_time }}</td>
-                        <td>{{ $train->arrival_time }}</td>
+                        <td>{{ $train->departure_date_time }}</td>
+                        <td>{{ $train->arrival_date_time }}</td>
                         <td>{{ $train->train_id }}</td>
                         <td>{{ $train->number_of_carriages }}</td>
                         <td>
