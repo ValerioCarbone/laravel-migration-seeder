@@ -2,6 +2,7 @@
 
 @section('title', 'Trains')
 @section('content')
+
     @dump($trains)
 
     <main>
